@@ -15,6 +15,12 @@
 .clearfix:before, .clearfix:after { content: ''; display: table; }
 .clearfix:after { clear: both; }
 
+body, html{
+    height: 100%;
+    width: 100%;
+    overflow:hidden;
+}
+
 body {
 	background: #f9f7f6;
 	color: #404d5b;
@@ -33,10 +39,12 @@ a:hover, a:focus {
 	color: #404d5b;
 }
 
-.container {
+.container-fluid {
 	margin: 0 auto;
 	text-align: center;
 	overflow: hidden;
+    width:100%;
+    height:100%;
 }
 
 .content {
@@ -55,16 +63,19 @@ a:hover, a:focus {
 	font-size: 0.65em;
 }
 
-.bgcolor-1 { background: #f0efee; }
-.bgcolor-2 { background: #f9f9f9; }
-.bgcolor-3 { background: #e8e8e8; }
-.bgcolor-4 { background: #2f3238; color: #fff; }
-.bgcolor-5 { background: #df6659; color: #521e18; }
-.bgcolor-6 { background: #2fa8ec; color: #fff;}
-.bgcolor-7 { background: #d0d6d6; }
-.bgcolor-8 { background: #3d4444; color: #fff; }
-.bgcolor-9 { background: #8781bd; color: #fff; }
-.bgcolor-10 { background: #6C6C6C; }
+.bgcolor-1 { background: #f0efee;
+    position: relative;
+    width:50%;
+    height:100%;
+    left: 50%;
+    margin-left:-25%;
+    
+}
+.contenu_form{
+    margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+  transform: translateY(-50%);
+}
+
 
 body .nomargin-bottom {
 	margin-bottom: 0;
