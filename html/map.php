@@ -5,7 +5,8 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
       <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <style>
+      <link href="../css/map.css" rel="stylesheet">
+    <!--<style>
       html, body {
         height: 100%;
         margin: 0;
@@ -14,19 +15,40 @@
       #map {
         height: 100%;
       }
-    </style>
+    </style>-->
   </head>
  
   <body>
  
-
+<div class="row" style= "margin-left: 2px; margin-right: 2px;">
+    <div onclick = "getHistorique()" class="center col-xs-3">
+        <img src="../img/bouton rouge.png" alt=""></img>
+        <span>CULINAIRE</span>
+    </div>
+    <div onclick = "getHistorique()" class="center col-xs-3">
+        <img src="../img/bouton orange.png" alt=""></img>
+        <span>HISTOIRE</span>
+    </div>
+    <div class="center col-xs-3">
+        <img onclick = "getHistorique()" src="../img/bouton bleu.png" alt=""></img>
+        <span>ART</span>
+    </div>
+    <div class="center col-xs-3">
+        <img onclick = "getHistorique()" src="../img/bouton vert.png" alt=""></img>
+        <span>LOISIRS</span>
+    </div>
+</div>
     <div id="map"></div>
-         <script src="../js/jquery-3.1.0.min.js"></script>
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4wilqA9ziJWNZhpyvpyxfzzcWv9pG45I&callback=initMap"
-        async defer></script>
-        <script src="../js/map.js"></script>
-         <script src="../js/bootstrap.min.js"></script>    
+    
+    <script src="../js/jquery-3.1.0.min.js"></script>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4wilqA9ziJWNZhpyvpyxfzzcWv9pG45I"
+       ></script>
+         <script src="../node_modules/geolocation-marker.js"></script>
+    <script src="../js/map.js"></script>
+    <script src="../js/bootstrap.min.js"></script>    
+    <script>initMap()</script>
   </body>
 </html>
         

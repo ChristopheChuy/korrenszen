@@ -14,6 +14,14 @@ class PointInteretGateway{
                 ':id_ville' => 1
             ));
     }
+    public function getEventByType($id_type){
+        $req =  $this->bdd->prepare('SELECT nom_point FROM point_interet where id_type = :id_type');
+            $req->execute(array(
+               ':id_type' => $id_type,
+            ));
+             return $req -> fetchAll();
+    }
+    
 
 }
 ?>
