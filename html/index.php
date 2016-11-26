@@ -23,29 +23,31 @@
 </head>
 <body>
     <div class="container-fluid">
-			
+			<div class="col-md-3"></div>
+            <div class="col-md-6">
 			<section class="content bgcolor-1">
                 <div class="contenu_form">
-				<span class="input input--haruki">
-					<input class="input__field input__field--haruki" type="text" id="input-1" />
-					<label class="input__label input__label--haruki" for="input-1">
-						<span class="input__label-content input__label-content--haruki">First Name</span>
-					</label>
-				</span>
-				<span class="input input--haruki">
-					<input class="input__field input__field--haruki" type="text" id="input-2" />
-					<label class="input__label input__label--haruki" for="input-2">
-						<span class="input__label-content input__label-content--haruki">Last Name</span>
-					</label>
-				</span>
-				<span class="input input--haruki">
-					<input class="input__field input__field--haruki" type="text" id="input-3" />
-					<label class="input__label input__label--haruki" for="input-3">
-						<span class="input__label-content input__label-content--haruki">Email</span>
-					</label>
-				</span>
+                    <div class="row">
+                        <span class="input input--haruki">
+                            <input class="input__field input__field--haruki" type="text" id="input-1" />
+                            <label class="input__label input__label--haruki" for="input-1">
+                                <span class="input__label-content input__label-content--haruki">Login</span>
+                            </label>
+                        </span>
                     </div>
+                    <br/><br/>
+                    <div class="row">
+                        <span class="input input--haruki">
+                            <input class="input__field input__field--haruki" type="text" id="input-2" />
+                            <label class="input__label input__label--haruki" for="input-2">
+                                <span class="input__label-content input__label-content--haruki">Mot de Passe</span>
+                            </label>
+                        </span>
+                    </div>
+                </div>
 			</section>
+                </div>
+        <div class="col-md-3"></div>
 			
 		</div><!-- /container -->
 		<script src="../js/classie.js"></script>

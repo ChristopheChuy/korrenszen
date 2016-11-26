@@ -65,10 +65,10 @@ a:hover, a:focus {
 
 .bgcolor-1 { background: #f0efee;
     position: relative;
-    width:50%;
-    height:100%;
-    left: 50%;
-    margin-left:-25%;
+    border-left: 4px solid #6a7989;
+    border-right: 4px solid #6a7989;
+    height:100vh;
+    
     
 }
 .contenu_form{
