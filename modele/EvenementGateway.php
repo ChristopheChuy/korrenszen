@@ -17,6 +17,7 @@ class EvenementGateway{
             ));
              return $req -> fetchAll();
     }
+    
   
 }
 ?>
