@@ -1,3 +1,12 @@
+<?php
+header('Content-type: text/html; charset=UTF-8'); 
+?>
+<?php 
+  session_start(); 
+  if($_SESSION['pseudo_user'] == "")
+    include("../php/initialiseSessions.php");
+?>
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -20,32 +29,51 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="../js/jquery-3.1.0.min.js"></script>
+    <script src="../js/sweetalert.min.js"></script> 
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
 </head>
 <body>
     <div class="container-fluid">
 			<div class="col-md-3"></div>
             <div class="col-md-6">
-			<section class="content bgcolor-1">
-                <div class="contenu_form">
-                    <div class="row">
-                        <span class="input input--haruki">
-                            <input class="input__field input__field--haruki" type="text" id="input-1" />
-                            <label class="input__label input__label--haruki" for="input-1">
-                                <span class="input__label-content input__label-content--haruki">Login</span>
-                            </label>
-                        </span>
+            
+                <section class="content bgcolor-1">
+                    
+                    <div class="contenu_form">
+                        <form action="javascript:testconnexion()" method="post" enctype="multipart/form-data" autocomplete="off">
+                        <div class="row">
+                            <span class="input input--haruki">
+                                <input class="input__field input__field--haruki" type="mail" id="input-1" />
+                                <label class="input__label input__label--haruki" for="input-1">
+                                    <span class="input__label-content input__label-content--haruki">Login / Mail</span>
+                                </label>
+                            </span>
+                        </div>
+                        <br/><br/>
+                        <div class="row">
+                            <span class="input input--haruki">
+                                <input class="input__field input__field--haruki" type="password" id="input-2" />
+                                <label class="input__label input__label--haruki" for="input-2">
+                                    <span class="input__label-content input__label-content--haruki">Mot de Passe</span>
+                                </label>
+                            </span>
+                        </div>
+                        <br/>
+                        <center><button type="submit" id="Submit" value="Submit" name="Submit" style="background-color:transparent;border-color:transparent;border-top:4px solid #6a7989;border-bottom:4px solid #6a7989;width:200px; height:50px; border-radius:0px; color:#6a7989;" class="btn btn-primary">Se connecter</button></center>
+                            </form>
+                        <br/>
+                        <center><button style="background-color:transparent;border-color:transparent;border-top:4px solid #6a7989;border-bottom:4px solid #6a7989;width:200px; height:50px; border-radius:0px; color:#6a7989;" class="btn btn-primary" id="inscrire">S'inscrire</button>
+                    <button style="background-color:transparent;border-color:transparent;border-top:4px solid #6a7989;border-bottom:4px solid #6a7989;width:200px; height:50px; border-radius:0px; color:#6a7989;" class="btn btn-primary" id="mdpoublie">Mot de passe oublié</button></center>
                     </div>
-                    <br/><br/>
-                    <div class="row">
-                        <span class="input input--haruki">
-                            <input class="input__field input__field--haruki" type="text" id="input-2" />
-                            <label class="input__label input__label--haruki" for="input-2">
-                                <span class="input__label-content input__label-content--haruki">Mot de Passe</span>
-                            </label>
-                        </span>
-                    </div>
-                </div>
-			</section>
+                    
+                    
+                    
+                </section>
+            
+            
                 </div>
         <div class="col-md-3"></div>
 			
@@ -86,11 +114,10 @@
 				}
 			})();
 		</script>
-    
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../js/bootstrap.min.js"></script>     
-    <script src="../js/script_connexion.js"></script>    
+    <script src="../js/connexion.js"></script>
+
 </body>
 </html>
