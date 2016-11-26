@@ -2,115 +2,115 @@ var map;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 43.609850699999996, lng: 3.8811104999999997 },
-        zoom: 8,
-        styles : [
-    {
-        "featureType": "landscape",
-        "stylers": [
+        zoom: 12,
+        styles: [
             {
-                "hue": "#FFBB00"
+                "featureType": "landscape",
+                "stylers": [
+                    {
+                        "hue": "#FFBB00"
+                    },
+                    {
+                        "saturation": 43.400000000000006
+                    },
+                    {
+                        "lightness": 37.599999999999994
+                    },
+                    {
+                        "gamma": 1
+                    }
+                ]
             },
             {
-                "saturation": 43.400000000000006
+                "featureType": "road.highway",
+                "stylers": [
+                    {
+                        "hue": "#FFC200"
+                    },
+                    {
+                        "saturation": -61.8
+                    },
+                    {
+                        "lightness": 45.599999999999994
+                    },
+                    {
+                        "gamma": 1
+                    }
+                ]
             },
             {
-                "lightness": 37.599999999999994
+                "featureType": "road.arterial",
+                "stylers": [
+                    {
+                        "hue": "#FF0300"
+                    },
+                    {
+                        "saturation": -100
+                    },
+                    {
+                        "lightness": 51.19999999999999
+                    },
+                    {
+                        "gamma": 1
+                    }
+                ]
             },
             {
-                "gamma": 1
+                "featureType": "road.local",
+                "stylers": [
+                    {
+                        "hue": "#FF0300"
+                    },
+                    {
+                        "saturation": -100
+                    },
+                    {
+                        "lightness": 52
+                    },
+                    {
+                        "gamma": 1
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "stylers": [
+                    {
+                        "hue": "#0078FF"
+                    },
+                    {
+                        "saturation": -13.200000000000003
+                    },
+                    {
+                        "lightness": 2.4000000000000057
+                    },
+                    {
+                        "gamma": 1
+                    }
+                ]
+            },
+            {
+                "featureType": "poi",
+                "stylers": [
+                    {
+                        "hue": "#00FF6A"
+                    },
+                    {
+                        "saturation": -1.0989010989011234
+                    },
+                    {
+                        "lightness": 11.200000000000017
+                    },
+                    {
+                        "gamma": 1
+                    }
+                ]
             }
         ]
-    },
-    {
-        "featureType": "road.highway",
-        "stylers": [
-            {
-                "hue": "#FFC200"
-            },
-            {
-                "saturation": -61.8
-            },
-            {
-                "lightness": 45.599999999999994
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "stylers": [
-            {
-                "hue": "#FF0300"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 51.19999999999999
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "stylers": [
-            {
-                "hue": "#FF0300"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 52
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "stylers": [
-            {
-                "hue": "#0078FF"
-            },
-            {
-                "saturation": -13.200000000000003
-            },
-            {
-                "lightness": 2.4000000000000057
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "stylers": [
-            {
-                "hue": "#00FF6A"
-            },
-            {
-                "saturation": -1.0989010989011234
-            },
-            {
-                "lightness": 11.200000000000017
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    }
-]
     });
     console.log(map);
 
-  
+
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -120,7 +120,7 @@ function initMap() {
             };
             map.setCenter(pos);
         })
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 150; i++) {
             markerAdd();
         }
     } else {
@@ -133,6 +133,25 @@ function markerAdd() {
     var sens = 1;
     if (Math.random() < 0.5) {
         sens = -1
+    }
+    console.log(Math.random());
+    switch (Math.random() * 4| 0) {
+        case 0:
+            var icon = '../img/marqueurrouge.png';
+            break;
+        case 1:
+            var icon = '../img/marqueurbleu.png';
+            break;
+        case 2:
+            var icon = '../img/marqueurvert.png';
+            break;
+        case 3:
+            var icon = '../img/marqueurorange.png';
+            break;
+
+        default:
+            var icon = '../img/marqueurrouge.png';
+            break;
     }
     var uluru = { lat: (Math.random() * 0.2) + 43.609850699999996, lng: (Math.random() * sens * 0.2) + 3.8811104999999997 };
     var contentString = '<div id="content">' +
@@ -150,7 +169,7 @@ function markerAdd() {
         'Aboriginal people of the area. It has many springs, waterholes, ' +
         'rock caves and ancient paintings. Uluru is listed as a World ' +
         'Heritage Site.</p>' +
-
+        '<div class="fb-like" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="false"></div>' +
 
         '<span class="glyphicon glyphicon-star " style="color:yellow" aria-hidden="true"></span>' +
         '<span class="glyphicon glyphicon-star " style="color:yellow" aria-hidden="true"></span>' +
@@ -171,7 +190,7 @@ function markerAdd() {
         position: uluru,
         map: map,
         title: '',
-        icon: '../img/testmarqueurrouge.png'
+        icon:icon
     });
     marker.addListener('click', function () {
         infowindow.open(map, marker);
@@ -185,6 +204,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         'Error: The Geolocation service failed.' :
         'Error: Your browser doesn\'t support geolocation.');
 }
-function getPointDInteret(){
+function getPointDInteret() {
 
 }
