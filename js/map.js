@@ -1,58 +1,70 @@
-function initData() {
-    $(document).ready(function () {
-        $.ajax({
-            url: '../php/recup_donne_map.php',
-            type: 'POST',
-            dataType: "json",
-            data: { id_type: id_type_selected },
-            success: function (response) {
-                $toto = JSON.stringify(response);
-                var nb = 0;
-                console.log(response.id_evenement);
-                for (var i in response[0]) {
-                    nb++;
-                    $toto = i;
-                    $tata = response[0][i];
-                }
-                console.log(nb);
-                var count = Object.keys(response).length;
-                $cpt = 0;
-                for ($i = 1; $i <= count; $i++) {
-                    $idevenement = response[$cpt].id_evenement;
-                    $nomevenement = response[$cpt].nom_evenement;
-                    $idcoordonnee = response[$cpt].id_coordonnee;
-                    $descriptionevenement = response[$cpt].description_evenement;
 
-
-                    $.ajax({
-                        url: '../php/recup_donne_lontitude.php',
-                        type: 'POST',
-                        dataType: "json",
-                        data: { idcoordonnee: $idcoordonnee },
-                        success: function (response) {
-
-
-
-                            $longitude = response.longitude;
-                            $latitude = response.latitude;
-                            $nomevenementnou = response.nom_evenement;
-                            $descriptionevenementnou = response.description_evenement;
-
-                            markerAdd($latitude, $longitude, $nomevenementnou, $descriptionevenementnou);
-                        },
-                        error: function (XMLHttpRequest, textStatus, exception, response) { alert("Ajax failure\n" + response); },
-                        async: true
-                    });
-                    $cpt++;
-                }
-            },
-            error: function (XMLHttpRequest, textStatus, exception, response) { alert("Ajax failure\n" + response); },
-            async: true
-        });
-
-    });
-}
 var id_type_selected = 1;
+function initData() {
+    $.ajax({
+        url: '../php/recup_donne_map.php',
+        type: 'POST',
+        dataType: "json",
+        data: { id_type: id_type_selected },
+        success: function(response) {
+            $toto = JSON.stringify(response);
+            var nb = 0;
+            console.log(response.id_evenement);
+            for (var i in response[0]) {
+                nb++;
+                $toto = i;
+                $tata = response[0][i];
+            }
+            console.log(nb);
+            var count = Object.keys(response).length;
+            $cpt = 0;
+            for ($i = 1; $i <= count; $i++) {
+                $idevenement = response[$cpt].id_evenement;
+                $nomevenement = response[$cpt].nom_evenement;
+                $idcoordonnee = response[$cpt].id_coordonnee;
+                $descriptionevenement = response[$cpt].description_evenement;
+
+
+                $.ajax({
+                    url: '../php/recup_donne_lontitude.php',
+                    type: 'POST',
+                    dataType: "json",
+                    data: {  id_type: id_type_selected ,idcoordonnee: $idcoordonnee },
+                    success: function(response) {
+
+
+console.log(response);
+                        $longitude = response.longitude;
+                        $latitude = response.latitude;
+                        $nomevenementnou = response.nom_evenement;
+                        $descriptionevenementnou = response.description_evenement;
+                        $latitu = Number($latitude);
+                        console.log($latitu);
+                        $longitu = Number($longitude);
+                        $nom = $nomevenementnou;
+                        var contentString = '<div id="content">' +
+                            '<div id="siteNotice">' +
+                            '</div>' +
+                            '<h1 id="firstHeading" class="firstHeading">' + $nom + '</h1>' +
+                            '<div id="bodyContent">' +
+                            '<p>' + $descriptionevenementnou + '</p>';
+                        var infowindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });
+                        markerAdd(infowindow, $latitu, $longitu);
+                    },
+                    error: function(XMLHttpRequest, textStatus, exception, response) { alert("Ajax failure 2\n" + response); },
+                    async: true
+                });
+                $cpt++;
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, exception, response) { alert("Ajax failure 1 \n" + response); },
+        async: true
+    });
+
+}
+
 var map;
 var markers = [];
 function changeidType(valeur) {
@@ -193,12 +205,12 @@ function initMap() {
     // Try HTML5 geolocation.
     var GeoMarker = new GeolocationMarker(map);
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
-                // lat: 47.316667,
-                // lng: 5.016667
+                //lat: 47.35719436239676,
+                //lng: 5.044204213045305
             };
             map.setCenter(pos);
         })
@@ -207,28 +219,11 @@ function initMap() {
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
-    initData();
     //
 }
 
-function markerAdd(lati, long, nom, descip) {
-    // console.log(lati);
-    // console.log(long);
-    $latitu = Number(lati);
-    console.log($latitu);
-    $longitu = Number(long);
-    $nom = nom;
-    $descrip = descip;
-    var uluru = { lat: $latitu, lng: $longitu };
-    console.log(uluru);
-    var contentString = '<div id="content">' +
-        '<div id="siteNotice">' +
-        '</div>' +
-        '<h1 id="firstHeading" class="firstHeading">' + $nom + '</h1>' +
-        '<div id="bodyContent">' +
-        '<p>' + $descrip + '</p>';
-
-
+function markerAdd(infoWindow, lati, long) {
+    uluru = { lat: lati , lng: long};
     switch (id_type_selected) {
         case 3:
             var icon = '../img/marqueurrouge.png';
@@ -246,17 +241,15 @@ function markerAdd(lati, long, nom, descip) {
             var icon = '../img/marqueurrouge.png';
             break;
     }
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
+
     var marker = new google.maps.Marker({
         position: uluru,
         map: map,
         icon: icon
     });
     markers.push(marker);
-    marker.addListener('click', function () {
-        infowindow.open(map, marker);
+    marker.addListener('click', function() {
+        infoWindow.open(map, marker);
     });
 };
 

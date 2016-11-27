@@ -23,6 +23,8 @@ function inscription(){
                                 type: "success",
                                showConfirmButton: false
                            });
+                          
+                           
                            setTimeout('redirection()', 1000);
                        } 
                     

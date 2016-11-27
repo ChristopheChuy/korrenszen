@@ -19,15 +19,17 @@ mysqli_set_charset($bdd, "utf8");
  $testmail = mysqli_real_escape_string($bdd, $testmail);
 
  $passwordsecure = md5($password);
- $mail = mysqli_query($bdd,"SELECT utilisateur FROM Clients WHERE utilisateur.email= '$testmail'");
+ $mail = mysqli_query($bdd,"SELECT email FROM utilisateur WHERE utilisateur.email= '$testmail'");
  $mai = mysqli_fetch_assoc($mail);
- $mails = $mai["mail"];
+ $mails = $mai["email"];
 
  if($mails == ""){ 
      
-    $inscription = mysqli_query($bdd,"INSERT INTO `utilisateur`(`id_utilisateur`, `pseudo`, `email`, `mdp`) 
-            VALUES ('', '$testnom', '$testmail', '$passwordsecure')");
+    $inscription = mysqli_query($bdd,"INSERT INTO `utilisateur`(`pseudo`, `email`, `mdp`) 
+            VALUES ('$testnom', '$testmail', '$passwordsecure')");
+            
     if($inscription){
+      
         $_SESSION["pseudo_user"] = $testnom;
     }
  }else{

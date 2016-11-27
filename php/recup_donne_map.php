@@ -4,8 +4,8 @@ header('Content-type: text/html; charset=UTF-8');
 <?php
 $bdd = mysqli_connect('localhost', 'root', '', 'korreszen');
 mysqli_set_charset($bdd, "utf8");
-
-$mail = mysqli_query($bdd,"SELECT id_evenement, nom_evenement, id_coordonnee, description_evenement FROM evenement ");
+$id_type = $_POST['id_type'];
+$mail = mysqli_query($bdd,"SELECT id_evenement, nom_evenement, id_coordonnee, description_evenement,id_type FROM evenement WHERE id_type =  '$id_type'");
 
 $evenement = array();
 $cp = 0;

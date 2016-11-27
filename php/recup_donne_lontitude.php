@@ -6,7 +6,8 @@ $bdd = mysqli_connect('localhost', 'root', '', 'korreszen');
 mysqli_set_charset($bdd, "utf8");
 $idcoordonnee = $_POST["idcoordonnee"];
 
-$latilon = mysqli_query($bdd,"SELECT latitude, longitude, nom_evenement, description_evenement FROM evenement inner join coordonnee on evenement.id_coordonnee = coordonnee.id_coordonnee where coordonnee.id_coordonnee = '$idcoordonnee' ");
+$id_type = $_POST['id_type'];
+$latilon = mysqli_query($bdd,"SELECT latitude, longitude, nom_evenement, description_evenement FROM evenement inner join coordonnee on evenement.id_coordonnee = coordonnee.id_coordonnee where coordonnee.id_coordonnee = '$idcoordonnee' AND id_type =  '$id_type' ");
 $row = mysqli_fetch_assoc($latilon);
 $evenement = $row;
 

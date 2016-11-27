@@ -9,3 +9,11 @@ html, body {
 .center {
     text-align: center;
 }
+.bordure {
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.col-xs-3 {
+    padding-right: 0;
+    padding-left: 0;
+}

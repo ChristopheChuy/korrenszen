@@ -30,12 +30,13 @@ header('Content-type: text/html; charset=UTF-8');
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="../js/jquery-3.1.0.min.js"></script>
-    
 </head>
-<body>
-    <div class="row exploration"></div>
-    <div class="row decouverte"></div>
+<body class="center" style="margin-top:0px;padding-top:0px;">
     
+         <button  onclick="decouverte()" type="button" class="btn btn-default decouverte">Mode touristique</button>
+   
+            <button  onclick="exploration()" type="button" class="btn exploration btn-default">Mode découverte</button>
+   
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
