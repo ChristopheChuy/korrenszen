@@ -1,7 +1,7 @@
 var map;
 function initMap() {
     var mapOptions = {
-        center: { lat: 43.609850699999996, lng: 3.8811104999999997 },
+        center: { lat: 47.316667, lng: 5.016667 },
         zoom: 12,
         disableDefaultUI: true,
         styles: [
@@ -120,8 +120,8 @@ function initMap() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
+                lat: 47.316667,
+                lng: 5.016667
             };
             map.setCenter(pos);
         })
@@ -172,7 +172,7 @@ function markerAdd(infowindow,map) {
         sens = -1
     }
     switch (Math.random() * 4 | 0) {
-        case 0:
+      /*  case 0:
             var icon = '../img/marqueurrouge.png';
             break;
         case 1:
@@ -183,13 +183,13 @@ function markerAdd(infowindow,map) {
             break;
         case 3:
             var icon = '../img/marqueurorange.png';
-            break;
+            break;*/
 
         default:
             var icon = '../img/marqueurrouge.png';
             break;
     }
-    var uluru = { lat: (Math.random() * 0.2) + 43.609850699999996, lng: (Math.random() * sens * 0.2) + 3.8811104999999997 };
+    var uluru = { lat: (Math.random() * 0.2) + 47.316667, lng: (Math.random() * sens * 0.2) + 5.016667 };
 
     var marker = new google.maps.Marker({
         position: uluru,
