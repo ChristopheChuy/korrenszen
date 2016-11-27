@@ -21,20 +21,20 @@
   <body>
  
 <div class="row" style= "margin-left: 2px; margin-right: 2px;">
-    <div onclick = "getHistorique()" class="center col-xs-3">
+    <div onclick = "changeidType(3)" class="center col-xs-3">
         <img src="../img/bouton rouge.png" alt=""></img>
         <span>CULINAIRE</span>
     </div>
-    <div onclick = "getHistorique()" class="center col-xs-3">
+    <div onclick = "changeidType(1)" class="center col-xs-3">
         <img src="../img/bouton orange.png" alt=""></img>
         <span>HISTOIRE</span>
     </div>
     <div class="center col-xs-3">
-        <img onclick = "getHistorique()" src="../img/bouton bleu.png" alt=""></img>
+        <img onclick = "changeidType(2)" src="../img/bouton bleu.png" alt=""></img>
         <span>ART</span>
     </div>
     <div class="center col-xs-3">
-        <img onclick = "getHistorique()" src="../img/bouton vert.png" alt=""></img>
+        <img onclick = "changeidType(4)" src="../img/bouton vert.png" alt=""></img>
         <span>LOISIRS</span>
     </div>
 </div>
